@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2022最具影響力時尚品牌</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "DFPKaiW5-GB", serif;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background-color: #000000;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        header h1 {
+            color: #ffffff;
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            text-align: center;
+        }
+
+        .marquee {
+            animation: marquee 10s linear infinite alternate;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(50%); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            min-height: 60px;
+            background-color: #262626;
+            z-index: 999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 10px;
+        }
+
+        #nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        #nav ul li {
+            background-color: #000000;
+            border-radius: 5px;
+            position: relative;
+            min-width: 100px;
+        }
+
+        #nav ul li a {
+            display: block;
+            color: white;
+            padding: 15px 10px;
+            text-align: center;
+            text-decoration: none;
+            font-size: clamp(0.8rem, 2vw, 1rem);
+        }
+
+        #nav ul li a:hover {
+            background-color: #004d99;
+            border-radius: 0px 0px 8px 8px;
+        }
+
+        #nav ul ol {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #000000;
+            border-radius: 8px;
+            min-width: 150px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        #nav ul li:hover > ol {
+            display: block;
+            z-index: 99;
+        }
+
+        #nav ul ol li {
+            margin: 0;
+            background-color: transparent;
+        }
+
+        #nav ul ol li a:hover {
+            border-radius: 8px;
+        }
+
+        #nav ul ol ul {
+            display: none;
+            position: absolute;
+            left: 100%;
+            top: 0;
+        }
+
+        #nav ul ol li:hover > ul {
+            display: block;
+        }
+
+        /* Main Layout */
+        .main-container {
+            display: flex;
+            margin-top: 120px;
+            min-height: calc(100vh - 200px);
+        }
+
+        /* Aside - Slideshow (左側圖片欄) */
+        aside {
+            width: 300px;
+            min-width: 250px;
+            height: calc(100vh - 200px);
+            position: fixed;
+            top: 120px;
+            left: 0;
+            overflow: hidden;
+            background-color: #333;
+            z-index: 10;
+        }
+
+        aside > a {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            animation: slider 30s linear infinite;
+        }
+
+        aside > a > img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        @keyframes slider {
+            0% { opacity: 0; }
+            2% { opacity: 1; }
+            18% { opacity: 1; }
+            20% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+
+        aside > a:nth-child(1) { animation-delay: 0s; }
+        aside > a:nth-child(2) { animation-delay: 5s; }
+        aside > a:nth-child(3) { animation-delay: 10s; }
+        aside > a:nth-child(4) { animation-delay: 15s; }
+        aside > a:nth-child(5) { animation-delay: 20s; }
+        aside > a:nth-child(6) { animation-delay: 25s; }
+
+        /* Section - Main Content (靠右顯示) */
+        section {
+            margin-left: 300px;
+            width: calc(100% - 300px);
+            padding: 20px;
+            background-color: #f2f2f2;
+            min-height: calc(100vh - 200px);
+            margin-bottom: 80px;
+        }
+
+        .content-section {
+            margin-bottom: 40px;
+        }
+
+        .content-section h1,
+        .content-section h3 {
+            text-align: center;
+            margin: 20px 0;
+            font-size: clamp(1.2rem, 4vw, 2rem);
+        }
+
+        .brand-intro {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .brand-intro img {
+            max-width: 100%;
+            height: auto;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .text-image-section {
+            margin: 30px 0;
+            overflow: hidden;
+        }
+
+        .text-left {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin: 30px 0;
+            clear: both;
+        }
+
+        .text-left img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+
+        .text-left .text-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .text-right {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin: 30px 0;
+            flex-direction: row-reverse;
+            clear: both;
+        }
+
+        .text-right img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+
+        .text-right .text-content {
+            flex: 1;
+            min-width: 300px;
+            text-align: right;
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .product-grid img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .product-grid img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Video Section */
+        .video-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .video-container video {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        /* Audio Section */
+        .audio-section {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .audio-section audio {
+            margin: 10px;
+        }
+
+        /* Footer */
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background-color: #262626;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            z-index: 998;
+        }
+
+        footer img {
+            width: 60px;
+            height: 60px;
+            margin: 5px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        footer img:hover {
+            width: 80px;
+            height: 80px;
+            transform: translateY(-10px);
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            margin-left: auto;
+            font-size: clamp(0.8rem, 2vw, 1.2rem);
+        }
+
+        /* Utility Classes */
+        .return-top {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .return-top a {
+            color: #004d99;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: none;
+            height: 2px;
+            background-color: #3d3d29;
+        }
+
+        .thanks-message {
+            background-color: #262626;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin: 20px 0;
+            animation: marquee 10s linear infinite alternate;
+        }
+
+        /* Hover Effects */
+        .style01:hover {
+            filter: sepia(50%);
+            transition: 1s;
+        }
+
+        .style02:hover {
+            border: 5px solid #faf9f9;
+            border-radius: 70%;
+            transition: 1s;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 1024px) {
+            aside {
+                width: 250px;
+            }
+            
+            section {
+                margin-left: 250px;
+                width: calc(100% - 250px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+                margin-top: 120px;
+            }
+
+            aside {
+                position: relative;
+                width: 100%;
+                height: 250px;
+                left: 0;
+                top: 0;
+            }
+
+            section {
+                width: 100%;
+                margin-left: 0;
+                margin-bottom: 80px;
+            }
+
+            #nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            #nav ul li {
+                width: 90%;
+                max-width: 200px;
+            }
+
+            .text-left,
+            .text-right {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .text-left .text-content,
+            .text-right .text-content {
+                text-align: center;
+            }
+
+            .text-left img,
+            .text-right img {
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+                height: auto;
+            }
+
+            .brand-intro {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .brand-intro img {
+                max-width: 90%;
+            }
+
+            .audio-section {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                height: 50px;
+            }
+
+            nav {
+                top: 50px;
+                min-height: 50px;
+            }
+
+            .main-container {
+                margin-top: 100px;
+            }
+
+            aside {
+                height: 200px;
+            }
+
+            section {
+                padding: 10px;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .text-left img,
+            .text-right img {
+                width: 100%;
+                height: auto;
+                max-width: 250px;
+            }
+
+            footer {
+                height: 60px;
+            }
+
+            footer img {
+                width: 40px;
+                height: 40px;
+            }
+
+            footer img:hover {
+                width: 50px;
+                height: 50px;
+            }
+        }
+		
+		.highlight-link {
+		  color: #009688;
+		  font-weight: bold;
+		  text-decoration: underline;
+		}
+
+		.highlight-link:hover {
+		  color: #00796b;
+		}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>
+            <span class="marquee">2022上半全球「最具影響力時尚品牌」</span>
+        </h1>
+    </header>
+
+    <nav>
+        <div id="nav">
+            <ul>
+                <li><a href="https://zh-tw.facebook.com/">Login</a></li>
+                <li>
+                    <a href="#g">Gucci</a>
+                    <ol>
+                        <li>
+                            <a href="#gg">Introduction</a>
+                            <ul>
+                                <li><a href="#classic">Classic Elements</a></li>
+                                <li><a href="#p">Product</a></li>
+                                <li><a href="#v">Video</a></li>
+                            </ul>
+                        </li>
+                    </ol>
+                </li>
+                <li>
+                    <a href="#ba">Balenciaga</a>
+                    <ol>
+                        <li>
+                            <a href="#baa">Introduction</a>
+                            <ul>
+                                <li><a href="#de">Demna Gvasalia</a></li>
+                                <li><a href="#pp">Product</a></li>
+                                <li><a href="#vv">Video</a></li>
+                            </ul>
+                        </li>
+                    </ol>
+                </li>
+                <li>
+                    <a href="#pr">Prada</a>
+                    <ol>
+                        <li>
+                            <a href="#prr">Introduction</a>
+                            <ul>
+                                <li><a href="#prrr">Classic Elements</a></li>
+                                <li><a href="#ppp">Product</a></li>
+                                <li><a href="#vvv">Video</a></li>
+                            </ul>
+                        </li>
+                    </ol>
+                </li>
+                <li><a href="#aud">Audio</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <aside>
+            <a href="#"><img src="images/77.png" alt="Fashion Brand 1"></a>
+            <a href="#"><img src="images/1.png" alt="Fashion Brand 2"></a>
+            <a href="#"><img src="images/12.png" alt="Fashion Brand 3"></a>
+            <a href="#"><img src="images/9.png" alt="Fashion Brand 4"></a>
+            <a href="#"><img src="images/15.png" alt="Fashion Brand 5"></a>
+            <a href="#"><img src="images/11.png" alt="Fashion Brand 6"></a>
+        </aside>
+
+        <section>
+            <p id="top"><h6>Top</h6></p>
+            <hr>
+
+            <!-- Gucci Section -->
+            <div class="content-section" id="g">
+                <h1>---------- Gucci ----------</h1>
+                
+                <div id="gg" class="brand-intro">
+                    <img src="images/13.jpg" alt="Gucci Logo">
+                    <img src="images/10.png" alt="Gucci Brand">
+                </div>
+                <hr>
+
+                <div id="classic" class="content-section">
+                    <h3>---------- 經典元素設計理念 ----------</h3>
+                    
+                    <div class="text-left">
+                        <img src="images/0.jpg" alt="雙G Logo">
+                        <div class="text-content">
+                            <h4>經典的「雙G」LOGO其實是由創辦人Guccio Gucci的兒子Aldo Gucci加入公司後，在1933年以父親Guccio Gucci名字裡的兩個大寫「G」、作為發想所設計的經典標誌。起初以顛倒相反的兩個「G」相扣而成，隨後在2015年藝術總監Alessandro Michele上任後大膽地將LOGO改為兩個正「G」重疊，為品牌開展全新的樣貌。</h4>
+                        </div>
+                    </div>
+
+                    <div class="text-right">
+                        <img src="images/000.jpg" alt="馬銜鍊">
+                        <div class="text-content">
+                            <h4>在1930年代創立的Gucci，最初是以製作馬術用具起家，在那個以馬術運動來象徵個人階級地位的年代，馬術更是上流社會貴族相當重要的活動之一，因此許多品牌的經典符碼其實都與馬術有著密不可分的關聯性，而馬銜鍊標誌就是其中之一！靈感取自於馬具上的馬銜和馬蹬，將兩個圓形用一條棒扣連接而成，不僅受到許多馬術迷們所喜愛，中性俐落的外型，更是不分男女老少都深深著迷！</h4>
+                        </div>
+                    </div>
+
+                    <div class="text-left">
+                        <img src="images/00000.jpg" alt="綠紅綠織帶">
+                        <div class="text-content">
+                            <h4>被世人所熟知的Gucci「綠紅綠」Webbing織帶、靈感是來自要馬鞍固定於馬背上時，所運用的「馬腹帶」。至於為什麼是以撞色醒目的「綠紅綠」為配色？一個原因是因為當時馬具的習慣用色而決定的，另一個原因則是汲取於品牌發源地——義大利的綠白紅國旗。</h4>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+
+                <div id="p" class="content-section">
+                    <h3>---------- Product ----------</h3>
+                    <div class="product-grid">
+                        <img src="images/99.avif" alt="Gucci Product 1">
+                        <img src="images/9999.avif" alt="Gucci Product 2">
+                        <img src="images/999.avif" alt="Gucci Product 3">
+                        <img src="images/88.avif" alt="Gucci Product 4">
+                        <img src="images/888.avif" alt="Gucci Product 5">
+                        <img src="images/8888.avif" alt="Gucci Product 6">
+                    </div>
+                </div>
+                <hr>
+
+                <div id="v" class="content-section">
+                    <h3>---------- Gucci Bloom The Campaign Film ----------</h3>
+                    <div class="video-container">
+                        <video controls>
+                            <source src="video/Gucci Bloom The Campaign Film.mp4" type="video/mp4">
+                            您的瀏覽器不支援影片播放。
+                        </video>
+                    </div>
+                </div>
+
+                <div class="return-top">
+                    <a href="#top">Return Top</a>
+                </div>
+                <hr>
+            </div>
+
+            <!-- Balenciaga Section -->
+            <div class="content-section" id="ba">
+                <h3>---------- Balenciaga ----------</h3>
+                
+                <div id="baa" class="brand-intro">
+                    <img src="images/7.webp" alt="Balenciaga Logo">
+                    <img src="images/77.webp" alt="Balenciaga Brand">
+                </div>
+                <hr>
+
+                <div id="de" class="content-section">
+                    <h3>---------- Balenciaga創意總監Demna Gvasalia ----------</h3>
+                    
+                    <div class="text-left">
+                        <img src="images/demna.jpg" alt="Demna Gvasalia">
+                        <div class="text-content">
+                            <h4>Demna Gvasaliay在1981年3月25日，出生於格魯吉亞(Georgia)，一個東正教基督家庭，當時蘇聯還未解體的80年代。1991年蘇聯解體後，在1991-1993之間發生格魯吉亞內戰，當時才12歲Demna Gvasalia隨著他的父母逃亡，前往德國。1997年，Demna Gvasalia選擇在第比利斯國立大學主修「國際經濟」，並在2001年完成學業，這四年他形容自己「The most unhappy person in the world」，可想而知他對經濟學讀的不是很開心，他可能當初選擇就讀經濟學是迫於幼時的戰亂經歷。</h4>
+                        </div>
+                    </div>
+
+                    <div class="text-right">
+                        <img src="images/de.jpg" alt="Demna Design">
+                        <div class="text-content">
+                            <h4>儘管他已經浪費四年的時光，他懷著渴望「時尚」的心，轉而去就讀「Royal Academy of Fine Arts」這所非常頂尖設計學校，這所學校出了許多各領域頂尖有名的設計師。於2006年Demna Gvasalia取得時裝設計碩士學位。在2009-2013加入Maison Martin Margiela女裝部，2013-2014先擔任Louis Vuitton女士高級成衣的高級設計師，之後短暫的Marc Jacobs和Nicolas Ghesquiere共事。</h4>
+                        </div>
+                    </div>
+
+                    <div class="text-left">
+                        <img src="images/dee.jpg" alt="Vetements">
+                        <div class="text-content">
+                            <h4>2014年Demna Gvasalia厭倦了當時時尚圈的風氣，為了宣洩他的憤怒，便與他的哥哥Guram一起成立了自己的品牌「Vetements」進軍時尚圈，已非傳統的設計理念迅速竄紅，成功以Vetement這個品牌向全世界展示了自己。次年2015年，Demna Gvasalia接捧大仁哥，成為Balenciaga創意總監，並在短短幾年內，使Balenciaga躍升成為人盡皆知的品牌，而現在多數所知道的Balenciaga，皆是Demna Gvasalia的作品。</h4>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+
+                <div id="pp" class="content-section">
+                    <h3>---------- Product ----------</h3>
+                    <div class="product-grid">
+                        <img src="images/1.jpg" alt="Balenciaga Product 1">
+                        <img src="images/110.jpg" alt="Balenciaga Product 2">
+                        <img src="images/1100.jpg" alt="Balenciaga Product 3">
+                        <img src="images/20.jpg" alt="Balenciaga Product 4">
+                        <img src="images/220.jpg" alt="Balenciaga Product 5">
+                        <img src="images/2200.jpg" alt="Balenciaga Product 6">
+                    </div>
+                </div>
+                <hr>
+
+                <div id="vv" class="content-section">
+                    <h3>---------- Balenciaga Fall 20 Campaign ----------</h3>
+                    <div class="video-container">
+                        <video controls>
+                            <source src="video/Balenciaga Fall 20 Campaign.mp4" type="video/mp4">
+                            您的瀏覽器不支援影片播放。
+                        </video>
+                    </div>
+                </div>
+
+                <div class="return-top">
+                    <a href="#top">Return Top</a>
+                </div>
+                <hr>
+            </div>
+
+            <!-- Prada Section -->
+            <div class="content-section" id="pr">
+                <h3>---------- Prada ----------</h3>
+                
+                <div id="prr" class="brand-intro">
+                    <img src="images/3.webp" alt="Prada Logo">
+                    <img src="images/789.jpg" alt="Prada Brand">
+                </div>
+                <hr>
+
+                <div id="prrr" class="content-section">
+                    <h3>---------- PRADA—極簡時尚的代表符碼 ----------</h3>
+                    
+                    <div class="text-left">
+                        <img src="images/lo.jpg" alt="Prada History">
+                        <div class="text-content">
+                            <h4>當Prada的尼龍包瘋迷全球女性滿街跑時，其實很少人知道Prada是起源於的歷史1913年，而且是以製造高級皮革製品起家的家族。20世紀初美洲與歐洲之間的交通頻繁，於是就有Mario Prada的家族決定設計生產一系列針對旅行使用的皮件產品，並于米蘭成立了品牌，且自英國進口最高級的銀、中國最好的魚皮、波西米亞的水晶，甚至將設計的皮件交給一向以嚴控品質著稱的德國生產。</h4>
+                        </div>
+                    </div>
+
+                    <div class="text-right">
+                        <img src="images/ll.jpg" alt="Prada Development">
+                        <div class="text-content">
+                            <h4>並在1913年米蘭成立一間專門販售高級皮件的精品店，持續經營到70年代，面對著Hermes、Gucci等對手強敵環伺在側，1958年創業者mario prada過世後，使PRADA幾乎瀕臨破產邊緣，就處於這樣的危困時期，Miuccia Prada與其夫婿接掌了這危危可岌的事業，Miuccia Prada對服裝的企圖非常謹慎，直到1989年才推出成衣的處女秀，逐漸帶領Prada進入一個前所未有的高峰期。</h4>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+
+                <div id="ppp" class="content-section">
+                    <h3>---------- Product ----------</h3>
+                    <div class="product-grid">
+                        <img src="images/as.webp" alt="Prada Product 1">
+                        <img src="images/aa.webp" alt="Prada Product 2">
+                        <img src="images/qa.webp" alt="Prada Product 3">
+                        <img src="images/fg.webp" alt="Prada Product 4">
+                        <img src="images/m.webp" alt="Prada Product 5">
+                        <img src="images/mm.webp" alt="Prada Product 6">
+                    </div>
+                </div>
+                <hr>
+
+                <div id="vvv" class="content-section">
+                    <h3>---------- Richie Hawtin at Prada Extends Miami ----------</h3>
+                    <div class="video-container">
+                        <video controls>
+                            <source src="video/Richie Hawtin at Prada Extends Miami.mp4" type="video/mp4">
+                            您的瀏覽器不支援影片播放。
+                        </video>
+                    </div>
+                </div>
+
+                <div class="return-top">
+                    <a href="#top">Return Top</a>
+                </div>
+                <hr>
+            </div>
+
+            <!-- Audio Section -->
+            <div class="content-section" id="aud">
+                <h3>---------- Audio ----------</h3>
+                <div class="audio-section">
+                    <audio controls>
+                        <source src="audio/1.mp3" type="audio/mp3">
+                        您的瀏覽器不支援音訊播放。
+                    </audio>
+                    <audio controls>
+                        <source src="audio/2.mp3" type="audio/mp3">
+                        您的瀏覽器不支援音訊播放。
+                    </audio>
+                    <audio controls>
+                        <source src="audio/3.mp3" type="audio/mp3">
+                        您的瀏覽器不支援音訊播放。
+                    </audio>
+                    <audio controls>
+                        <source src="audio/4.mp3" type="audio/mp3">
+                        您的瀏覽器不支援音訊播放。
+                    </audio>
+                </div>
+
+                <div class="return-top">
+                    <a href="#top">Return Top</a>
+                </div>
+				
+				<div class="thanks-message">
+                ~~Thanks for Watching~~
+            </div>
+            </div>
+
+        </section>
+    </div>
+
+    <footer>
+        <img src="images/2.png" alt="Footer 1">
+        <img src="images/3.png" alt="Footer 2">
+        <img src="images/4.png" alt="Footer 3">
+        <img src="images/5.png" alt="Footer 4">
+        <a href="https://www.gq.com.tw/fashion/article/2022-q2-%E6%9C%80%E5%85%B7%E5%BD%B1%E9%9F%BF%E5%8A%9B-%E6%99%82%E5%B0%9A%E5%93%81%E7%89%8C" target="_blank" class="highlight-link">最具影響力時尚品牌</a>
+    </footer>
+	
