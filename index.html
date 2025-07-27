@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
@@ -90,6 +89,7 @@
             border-radius: 0px 0px 8px 8px;
         }
 
+        /* 修正下拉選單樣式 - 移除預設的數字編號並確保背景色 */
         #nav ul ol {
             display: none;
             position: absolute;
@@ -99,6 +99,7 @@
             border-radius: 8px;
             min-width: 150px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            list-style: none; /* 移除預設編號 */
         }
 
         #nav ul li:hover > ol {
@@ -108,22 +109,42 @@
 
         #nav ul ol li {
             margin: 0;
-            background-color: transparent;
+            background-color: #000000; /* 確保背景色 */
+            border-radius: 0;
+        }
+
+        #nav ul ol li a {
+            background-color: #000000; /* 確保連結背景色 */
         }
 
         #nav ul ol li a:hover {
+            background-color: #004d99;
             border-radius: 8px;
         }
 
+        /* 第三層選單 */
         #nav ul ol ul {
             display: none;
             position: absolute;
             left: 100%;
             top: 0;
+            list-style: none; /* 移除預設編號 */
         }
 
         #nav ul ol li:hover > ul {
             display: block;
+        }
+
+        #nav ul ol ul li {
+            background-color: #000000; /* 確保第三層背景色 */
+        }
+
+        #nav ul ol ul li a {
+            background-color: #000000; /* 確保第三層連結背景色 */
+        }
+
+        #nav ul ol ul li a:hover {
+            background-color: #004d99;
         }
 
         /* Main Layout */
@@ -396,6 +417,36 @@
             color: #00796b;
         }
 
+        /* 漢堡選單樣式 */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 15px;
+            background: #000;
+            border-radius: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
         /* 響應式設計 */
         @media (max-width: 1024px) {
             aside {
@@ -409,33 +460,132 @@
         }
 
         @media (max-width: 768px) {
-            .main-container {
-                flex-direction: column;
-                margin-top: 120px;
+            /* 導航欄調整 */
+            nav {
+                min-height: 50px;
+                justify-content: flex-start;
+                padding: 0 20px;
             }
 
-            aside {
-                position: relative;
-                width: 100%;
-                height: 250px;
+            .hamburger {
+                display: flex !important;
+                z-index: 1001;
+            }
+
+            #nav {
+                position: absolute;
+                top: 100%;
                 left: 0;
-                top: 0;
+                width: 100%;
+                background: #262626;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+                z-index: 1000;
             }
 
-            section {
-                width: 100%;
-                margin-left: 0;
-                margin-bottom: 80px;
+            #nav.active {
+                max-height: 500px;
+                overflow: visible;
             }
 
             #nav ul {
-                flex-direction: column;
-                align-items: center;
+                flex-direction: row !important;
+                flex-wrap: wrap;
+                justify-content: center;
+                padding: 20px 10px;
+                gap: 10px;
             }
 
             #nav ul li {
-                width: 90%;
-                max-width: 200px;
+                min-width: 80px;
+                flex: 0 1 auto;
+                background-color: #000000 !important;
+            }
+
+            #nav ul li a {
+                padding: 12px 8px;
+                font-size: 0.9rem;
+                background-color: #000000 !important;
+                color: white !important;
+            }
+
+            #nav ul li a:hover {
+                background-color: #004d99 !important;
+            }
+
+            /* 下拉選單在手機版改為點擊展開 */
+            #nav ul ol {
+                position: static !important;
+                display: none;
+                background: #1a1a1a;
+                margin-top: 5px;
+                border-radius: 5px;
+                box-shadow: none;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+
+            #nav ul li.mobile-active > ol {
+                display: block !important;
+                max-height: 200px;
+            }
+
+            #nav ul ol li {
+                background-color: #1a1a1a !important;
+                width: 100%;
+            }
+
+            #nav ul ol li a {
+                background-color: #1a1a1a !important;
+            }
+
+            #nav ul ol ul {
+                position: static !important;
+                left: 0;
+                margin-left: 15px;
+                background: #0d0d0d;
+            }
+
+            #nav ul ol ul li {
+                background-color: #0d0d0d !important;
+            }
+
+            #nav ul ol ul li a {
+                background-color: #0d0d0d !important;
+            }
+
+            /* 主要布局調整 - 手機版不改變布局結構 */
+            .main-container {
+                margin-top: 110px; /* 保持原有的 margin-top */
+                /* 移除 flex-direction: column */
+            }
+
+            /* 左側圖片區域 - 在手機版隱藏或縮小 */
+            aside {
+                display: none; /* 完全隱藏左側圖片區域 */
+            }
+
+            /* 或者如果你想保留但縮小，可以用這個替代上面的 display: none */
+            /*
+            aside {
+                width: 100%;
+                height: 200px;
+                position: relative;
+                top: 0;
+                left: 0;
+                margin-bottom: 20px;
+            }
+            */
+
+            /* 主內容區域調整 */
+            section {
+                width: 100% !important;
+                margin-left: 0 !important;
+                margin-bottom: 80px;
+                padding: 15px;
             }
 
             .text-left,
@@ -552,6 +702,11 @@
     </header>
 
     <nav>
+        <div class="hamburger" id="hamburger-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
         <div id="nav">
             <ul>
                 <li><a href="https://zh-tw.facebook.com/">Login</a></li>
@@ -608,6 +763,7 @@
             <a href="#"><img src="images/15.png" alt="Fashion Brand 5"></a>
             <a href="#"><img src="images/11.png" alt="Fashion Brand 6"></a>
         </aside>
+
 
         <section>
             <div id="top"></div>
