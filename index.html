@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
@@ -385,6 +386,16 @@
             transition: 1s;
         }
 
+        .highlight-link {
+            color: #009688;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        .highlight-link:hover {
+            color: #00796b;
+        }
+
         /* 響應式設計 */
         @media (max-width: 1024px) {
             aside {
@@ -508,17 +519,6 @@
                 height: 50px;
             }
         }
-		
-		.highlight-link {
-		  color: #009688;
-		  font-weight: bold;
-		  text-decoration: underline;
-		}
-
-		.highlight-link:hover {
-		  color: #00796b;
-		}
-
     </style>
 </head>
 <body>
@@ -587,7 +587,7 @@
         </aside>
 
         <section>
-            <p id="top"></p>
+            <div id="top"></div>
             <hr>
 
             <!-- Gucci Section -->
@@ -798,16 +798,16 @@
                         <source src="audio/4.mp3" type="audio/mp3">
                         您的瀏覽器不支援音訊播放。
                     </audio>
-                </div>
+                 </div>
 
-                <div class="return-top">
-                    <a href="#top">Return Top</a>
-                </div>
-				
-				<div class="thanks-message">
-                ~~Thanks for Watching~~
-            </div>
-            </div>
+    <div class="return-top">
+        <a href="#top">Return Top</a>
+    </div>
+    
+    <div class="thanks-message">
+        ~~Thanks for Watching~~
+    </div>
+</div>
 
         </section>
     </div>
@@ -819,4 +819,5 @@
         <img src="images/5.png" alt="Footer 4">
         <a href="https://www.gq.com.tw/fashion/article/2022-q2-%E6%9C%80%E5%85%B7%E5%BD%B1%E9%9F%BF%E5%8A%9B-%E6%99%82%E5%B0%9A%E5%93%81%E7%89%8C" target="_blank" class="highlight-link">最具影響力時尚品牌</a>
     </footer>
-	
+</body>
+</html>
