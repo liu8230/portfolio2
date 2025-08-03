@@ -344,6 +344,47 @@
         height: 40px;
       }
     }
+	  .slide-caption {
+		  position: absolute;
+		  bottom: 20px;
+		  left: 50%;
+		  transform: translateX(-50%);
+		  background: rgba(0, 0, 0, 0.5);
+		  color: var(--gold);
+		  font-family: 'Playfair Display', serif;
+		  font-size: 1.2rem;
+		  padding: 8px 20px;
+		  border-radius: 20px;
+		  opacity: 0;
+		  animation: fadeText 30s linear infinite;
+		}
+		
+		@keyframes fadeText {
+		  0% { opacity: 0; }
+		  2% { opacity: 1; }
+		  18% { opacity: 1; }
+		  20% { opacity: 0; }
+		  100% { opacity: 0; }
+		}
+
+	  #aud {
+  text-align: center;
+  margin: 40px 0;
+}
+
+#aud h1 {
+  font-family: 'Playfair Display', serif;
+  color: #111;
+}
+
+#aud audio {
+  display: block;
+  margin: 20px auto;
+  width: 80%;
+  max-width: 400px;
+}
+
+
   </style>
 </head>
 <body>
@@ -611,10 +652,12 @@
     <div class="return-top">
         <a href="#top">Return Top</a>
     </div>
-    
-		<div class="thanks-message">
-			~~Thanks for Watching~~
-		</div>
+
+		<aside>
+			  <a href="#">
+			    <div class="slide-caption">~~Thanks for Watching~~</div>
+			  </a>
+		</aside>
 	</div>
 	<div class="copyright-notice">
     <hr>
@@ -635,3 +678,4 @@
   </footer>
 </body>
 </html>
+
