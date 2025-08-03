@@ -9,7 +9,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
 
   <style>
-    /* Reset & Base */
+    /* ---------- 全域變數 ---------- */
+    :root {
+      --gold: #d4af37; /* 香檳金 */
+    }
+
+    /* Reset */
     * {
       margin: 0;
       padding: 0;
@@ -43,7 +48,7 @@
     }
     header h1 {
       font-family: 'Playfair Display', serif;
-      color: #FFD700;
+      color: var(--gold);
       font-size: clamp(1rem, 3vw, 1.5rem);
     }
 
@@ -54,7 +59,7 @@
       left: 0;
       width: 100%;
       background: #111;
-      border-bottom: 1px solid rgba(255,215,0,0.3);
+      border-bottom: 1px solid rgba(212,175,55,0.3);
       z-index: 999;
       display: flex;
       justify-content: center;
@@ -79,10 +84,12 @@
       transition: color 0.3s ease, background 0.3s ease;
     }
     #nav ul li a:hover {
-      color: #FFD700;
+      color: var(--gold);
       background: rgba(255,255,255,0.05);
       border-radius: 6px;
     }
+
+    /* Dropdown */
     #nav ul ol {
       display: none;
       position: absolute;
@@ -92,6 +99,9 @@
       border-radius: 6px;
       min-width: 150px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      list-style: none; /* 移除數字 */
+      padding: 0;
+      margin: 0;
     }
     #nav ul li:hover > ol {
       display: block;
@@ -102,7 +112,7 @@
     }
     #nav ul ol li a:hover {
       background-color: #222;
-      color: #FFD700;
+      color: var(--gold);
     }
 
     /* Layout */
@@ -115,9 +125,9 @@
     /* Aside (Slideshow) */
     aside {
       width: 280px;
-      height: calc(100vh - 130px);
+      height: calc(100vh - 70px); /* 頂到 header 下方 */
       position: fixed;
-      top: 130px;
+      top: 70px;
       left: 0;
       background: #000;
       overflow: hidden;
@@ -158,7 +168,7 @@
 
     /* Section */
     section {
-      margin-left: 280px;
+      margin-left: 280px; /* 與 aside 對齊 */
       width: calc(100% - 280px);
       padding: 30px;
       background-color: #fdfdfd;
@@ -179,14 +189,14 @@
       width: 80px;
       height: 3px;
       margin: 10px auto;
-      background: #FFD700;
+      background: var(--gold);
       border-radius: 2px;
     }
     hr {
       margin: 20px 0;
       border: none;
       height: 2px;
-      background: linear-gradient(to right, #FFD700, #fff);
+      background: linear-gradient(to right, var(--gold), #fff);
     }
 
     /* Brand Intro & Text Images */
@@ -210,7 +220,7 @@
     .text-left img:hover,
     .text-right img:hover {
       transform: scale(1.03);
-      border: 2px solid #FFD700;
+      border: 2px solid var(--gold);
     }
     .text-left,
     .text-right {
@@ -269,7 +279,7 @@
       width: 100%;
       height: 80px;
       background: #111;
-      border-top: 1px solid rgba(255,215,0,0.3);
+      border-top: 1px solid rgba(212,175,55,0.3);
       display: flex;
       align-items: center;
       padding: 0 20px;
@@ -284,10 +294,10 @@
     }
     footer img:hover {
       transform: scale(1.2) translateY(-5px);
-      border: 2px solid #FFD700;
+      border: 2px solid var(--gold);
     }
     footer a {
-      color: #FFD700;
+      color: var(--gold);
       text-decoration: none;
       margin-left: auto;
       font-size: clamp(0.8rem, 2vw, 1.2rem);
@@ -377,28 +387,25 @@
     </div>
   </nav>
 
-	  <div class="main-container">
-	    <!-- 左側輪播 -->
-	    <aside>
-	      <a href="#"><img src="images/77.png" alt="Fashion Brand 1"></a>
-	      <a href="#"><img src="images/1.png" alt="Fashion Brand 2"></a>
-	      <a href="#"><img src="images/12.png" alt="Fashion Brand 3"></a>
-	      <a href="#"><img src="images/9.png" alt="Fashion Brand 4"></a>
-	      <a href="#"><img src="images/15.png" alt="Fashion Brand 5"></a>
-	      <a href="#"><img src="images/11.png" alt="Fashion Brand 6"></a>
-	    </aside>
-		  
-        <section>
-            <div id="top"></div>
-            <hr>
-	
-	 <section>
-	      <div class="content-section" id="g">
-	        <h1>---------- Gucci ----------</h1>
-	        <div class="brand-intro" id="gg">
-	          <img src="images/13.jpg" alt="Gucci Logo">
-	          <img src="images/10.png" alt="Gucci Brand">
-	        </div>
+  <div class="main-container">
+    <!-- 左側輪播 -->
+    <aside>
+      <a href="#"><img src="images/77.png" alt="Fashion Brand 1"></a>
+      <a href="#"><img src="images/1.png" alt="Fashion Brand 2"></a>
+      <a href="#"><img src="images/12.png" alt="Fashion Brand 3"></a>
+      <a href="#"><img src="images/9.png" alt="Fashion Brand 4"></a>
+      <a href="#"><img src="images/15.png" alt="Fashion Brand 5"></a>
+      <a href="#"><img src="images/11.png" alt="Fashion Brand 6"></a>
+    </aside>
+
+    <!-- 右側主內容 -->
+    <section>
+      <div class="content-section" id="g">
+        <h1>---------- Gucci ----------</h1>
+        <div class="brand-intro" id="gg">
+          <img src="images/13.jpg" alt="Gucci Logo">
+          <img src="images/10.png" alt="Gucci Brand">
+        </div>
                 <hr>
 
                 <div id="classic" class="content-section">
@@ -619,7 +626,7 @@
 	</div>
         </section>
     </div>
-<footer>
+ <footer>
     <img src="images/2.png" alt="Footer 1">
     <img src="images/3.png" alt="Footer 2">
     <img src="images/4.png" alt="Footer 3">
